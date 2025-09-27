@@ -26,7 +26,7 @@ const Login = () => {
           emailId: emailId,
           password: password,
         },
-        { withCredential: true }
+        {withCredentials : true }
       );
       navigate("/browse");
       console.log(response);

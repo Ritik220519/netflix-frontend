@@ -8,3 +8,6 @@ export const API_OPTIONS = {
 };
 
 export const Now_Playing_movie = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+export const TMDB_IMG_URL = "https://image.tmdb.org/t/p/w300/";
+export const TRAILER_VIDEO_API = 'https://api.themoviedb.org/3/movie/videos?language=en-US';
+export const POPULAR_MOVIE_API = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';

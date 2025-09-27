@@ -11,7 +11,7 @@ const useNowPlayingMovie = () => {
     const getNowPlayingMovies = async ()=>{
 
          const response = await axios.get(Now_Playing_movie , API_OPTIONS)
-         console.log(response)
+  
          dispatch(addNowPlayingMovie(response.data.results))
             
     }
