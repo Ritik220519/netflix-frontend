@@ -11,3 +11,6 @@ export const Now_Playing_movie = 'https://api.themoviedb.org/3/movie/now_playing
 export const TMDB_IMG_URL = "https://image.tmdb.org/t/p/w300/";
 export const TRAILER_VIDEO_API = 'https://api.themoviedb.org/3/movie/videos?language=en-US';
 export const POPULAR_MOVIE_API = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
+export const TOPRATED_MOVIES_API =  'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
+export const UPCOMING_MOVIES_API = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
+export const SEARCH_MOVIE_API = 'https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query='
