@@ -3,42 +3,74 @@ import Header from "./Header";
 import axios from "axios";
 import { BASE_URL } from "../utils/constant";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userInfo } from "../Redux/user";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [emailId, setEmailId] = useState("vaishnavi@gmail.com");
-  const [password, setPassword] = useState("Vaishnavi@1234");
+  const [emailId, setEmailId] = useState("Shubam123@gmail.com");
+  const [password, setPassword] = useState("Shubam@123");
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const HandleSignInForn = () => {
+  const handleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
+  };
+  const handleSignUpApi = async (e) => {
+    if(e) e.preventDefault();
+    try {
+      const response = await axios.post(
+        BASE_URL + "/signup",
+        {
+          firstName,
+          lastName,
+          emailId,
+          password,
+        },
+        { withCredentials: true }
+      );
+      dispatch(userInfo(response?.data))
+      navigate("/");
+      // console.log(response);
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data);
+  
+    }
   };
   const loginApi = async () => {
     try {
       const response = await axios.post(
         BASE_URL + "/login",
         {
-          emailId: emailId,
-          password: password,
+          emailId,
+          password
         },
-        {withCredentials : true }
+        { withCredentials: true }
       );
-      navigate("/browse");
-      console.log(response);
+      console.log("login response" , response)
+      dispatch(userInfo(response?.data));
+    //  localStorage.setItem("user" , JSON.stringify(response?.data));
+      navigate("/");
+      
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error);
       setError(error.response.data);
-      throw new Error("Login faield : ", error.response.data);
+      throw new Error("Login faield : ", error.message);
     }
   };
 
   const handleApiCall = () => {
-    loginApi();
+    if (!isSignInForm) {
+      handleSignUpApi();
+    } else {
+      loginApi();
+    }
   };
 
   return (
@@ -105,7 +137,7 @@ const Login = () => {
         </button>
         <p
           className="m-2 p-2 cursor-pointer  "
-          onClick={() => HandleSignInForn()}
+          onClick={() => handleSignInForm()}
         >
           {isSignInForm
             ? "New to Netflix? Sign up now."

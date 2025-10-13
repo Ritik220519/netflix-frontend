@@ -11,7 +11,7 @@ const MainContainer = () => {
   if (!nowPlayingMovies) return;
 
   const mainMovie = nowPlayingMovies[0];
-
+  
   const { overview, title, id } = mainMovie;
  
 
