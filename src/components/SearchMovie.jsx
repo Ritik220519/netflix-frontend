@@ -15,9 +15,11 @@ const SearchMovie = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-wrap justify-center p-4 bg-gray-950">
-        {filteredMovies.map((movie) => (
-          <div className="mx-6 py-4  ">
+      <div className="flex absolute z-20 bg-gradient-to-b from-black w-full">
+        <img className="w-full" src="https://assets.nflxext.com/ffe/siteui/vlv3/0b0dad79-ad4d-42b7-b779-8518da389976/web/IN-en-20250908-TRIFECTA-perspective_0647b106-80e1-4d25-9649-63099752b49a_large.jpg" alt="" />
+        <div className="flex justify-center flex-wrap absolute z-20">
+            {filteredMovies.map((movie) => (
+          <div className=" mx-6 py-4 ">
             <img
               className="w-48 rounded-xl hover:w-56 cursor-pointer"
               src={TMDB_IMG_URL + movie.poster_path}
@@ -28,6 +30,9 @@ const SearchMovie = () => {
             </div>
           </div>
         ))}
+
+        </div>
+      
       </div>
     </>
   );
